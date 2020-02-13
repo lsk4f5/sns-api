@@ -77,7 +77,7 @@ function getUsers() {
     const page = document.getElementById("page").value;
     const limit = document.getElementById("limit").value;
     const query = document.getElementById("query").value;
-    fetch((`https://teachapi.herokuapp.com/users?page=&limit=&query=`), {
+    fetch(`https://teachapi.herokuapp.com/users?page=${page}&limit=${limit}&query=${query}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -85,14 +85,13 @@ function getUsers() {
             "Authorization": "Bearer ircQkvMQUHpotKQN9sf3JAtt"
         }
     })
-        .then((userlogin) => {
-            return userlogin.json();
+        .then((userslist) => {
+            return userslist.json();
         })
         .then(json => {
             console.log(json);
         })
 }
-
 console.log("getUsers() start")
 getUsers()
 console.log("getUsers() end")
