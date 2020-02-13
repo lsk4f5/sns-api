@@ -40,6 +40,7 @@ function user() {
 }
 
 // ログイン  https://teachapi.herokuapp.com/sign_in
+// 怖いから確認のコミットとプッシュをします
 const login_url = "https://teachapi.herokuapp.com/sign_in"
 // 入力された情報を取得
 function login() {
