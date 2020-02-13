@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>apitask</title>
+</head>
+
+<body>
+    <!--  https://teachapi.herokuapp.com/sign_up ユーザー登録 -->
+    <div class="user-form">
+        <p>ユーザー登録</p>
+        <div id="newly">
+            <input id="sign_up_name" type="text" name="name" placeholder="名前">
+            <input id="sign_up_bio" type="text" name="bio" placeholder="自己紹介">
+            <input id="sign_up_mail" type="text" name="mail" placeholder="メールアドレス">
+            <input id="sign_up_pass" type="text" name="pass" placeholder="パスワード">
+            <input id="sign_up_pass2" type="text" name="check" placeholder="パスワードの確認">
+            <input type="button" value="送信" onclick="user();">
+        </div>
+    </div>
+    <div class="login">
+        <p>ログイン</p>
+        <div id="loginform">
+            <input id="login_mail" type="text" placeholder="メールアドレス">
+            <input id="login_pass" type="text" placeholder="パスワード">
+            <input id="login_passcheck" type="text" placeholder="パスワードの確認">
+            <input type="button" value="送信" onclick="login();">
+        </div>
+    </div>
+    <div class="list">
+        <p>ユーザー一覧</p>
+        <div id="user_list">
+            <input id="page" type="text" placeholder="ページ">
+            <input id="limit" type="text" placeholder="limit">
+            <input id="query" type="text" placeholder="query">
+            <input type="button" value="送信" onclick="();">
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
