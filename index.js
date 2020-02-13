@@ -73,3 +73,26 @@ function login() {
 // ユーザー一覧　 https://teachapi.herokuapp.com/users
 const user_list = "https://teachapi.herokuapp.com/users"
 // 入力された情報を取得
+function getUsers() {
+    const page = document.getElementById("page").value;
+    const limit = document.getElementById("limit").value;
+    const query = document.getElementById("query").value;
+    fetch((`https://teachapi.herokuapp.com/users?page=&limit=&query=`), {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            // ベアラートークンを入れる
+            "Authorization": "Bearer ircQkvMQUHpotKQN9sf3JAtt"
+        }
+    })
+        .then((userlogin) => {
+            return userlogin.json();
+        })
+        .then(json => {
+            console.log(json);
+        })
+}
+
+console.log("getUsers() start")
+getUsers()
+console.log("getUsers() end")
