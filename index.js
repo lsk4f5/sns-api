@@ -1,6 +1,6 @@
 // token
 // Authorization: Bearer ircQkvMQUHpotKQN9sf3JAtt
-
+id = (localStorage.getItem("id"));
 //  https://teachapi.herokuapp.com/sign_up　ユーザー登録
 const register = "https://teachapi.herokuapp.com/sign_up";
 // フォーム入力された情報を取得
@@ -66,8 +66,15 @@ function login() {
             return userlogin.json();
         })
         .then(json => {
-            console.log(json);
+            // const id = json.id
+            console.log(json.id)
+            localStorage.setItem('id', json.id);
+
+            // const load = () => {
+            //     localStorage.getItem("userid");
+            // }
         })
+
 }
 
 // ユーザー一覧　 https://teachapi.herokuapp.com/users
@@ -123,9 +130,9 @@ postList()
 console.log("postList() end")
 
 // ユーザー編集　 https://teachapi.herokuapp.com/users/{id}
-const user_edit = "https://teachapi.herokuapp.com/users/895"
+const user_edit = "https://teachapi.herokuapp.com/users/895" + id
 // 入力された情報を取得
-function userEdit() {
+function userEdit(id) {
     const edit_name = document.getElementById("edit_name").value;
     const edit_bio = document.getElementById("edit_bio").value;
     const data = {
@@ -134,7 +141,7 @@ function userEdit() {
             bio: edit_bio,
         }
     }
-    fetch('https://teachapi.herokuapp.com/users/895', {
+    fetch('https://teachapi.herokuapp.com/users/' + id, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -152,7 +159,7 @@ function userEdit() {
 }
 
 // ユーザーのタイムライン https://teachapi.herokuapp.com/users/{id}
-const timeline = "https://teachapi.herokuapp.com/users/895/timeline"
+const timeline = "https://teachapi.herokuapp.com/users/timeline" + id
 // 入力された情報を取得
 function user_timeline() {
     const timeline_page = document.getElementById("timeline_page").value;
@@ -181,7 +188,7 @@ function createPost() {
     const new_page = document.getElementById("new_page").value;
     const postdata = {
         post_params: {
-            text: "text"
+            text: new_page
         }
     };
     fetch('https://teachapi.herokuapp.com/posts', {
@@ -201,3 +208,34 @@ function createPost() {
         })
 }
 
+// 投稿編集　https://teachapi.herokuapp.com/posts/{id}
+const postEdit = "https://teachapi.herokuapp.com/posts/" + id
+// 入力された情報を取得
+function post_edit() {
+    const edit_post = document.getElementById("edit_post").value;
+    const post_id = document.getElementById("post_id").value;
+    const editdata = {
+        post_params: {
+            text: edit_post
+        }
+    };
+
+    fetch('https://teachapi.herokuapp.com/posts/552', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            // ベアラートークンを入れる
+            "Authorization": "Bearer ircQkvMQUHpotKQN9sf3JAtt"
+        },
+        body: JSON.stringify(editdata),
+    })
+        .then(response => {
+            console.log("test");
+            return response.json();
+        })
+        .then(json => {
+            console.log(json);
+        })
+}
+
+// 投稿削除　https://teachapi.herokuapp.com/posts/{id}
