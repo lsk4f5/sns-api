@@ -3,7 +3,7 @@
 id = localStorage.getItem("id");
 token = localStorage.getItem("token");
 //  https://teachapi.herokuapp.com/sign_up　ユーザー登録
-function user() {
+function user_register() {
     const register = "https://teachapi.herokuapp.com/sign_up";
     const sign_up_name = document.getElementById("sign_up_name").value;
     console.log("sign_up_name : " + sign_up_name);
