@@ -118,7 +118,7 @@ function postList() {
 }
 
 // ユーザー編集　 https://teachapi.herokuapp.com/users/{id}
-function userEdit(id) {
+function userEdit() {
     const user_edit = "https://teachapi.herokuapp.com/users/895" + id
     const edit_name = document.getElementById("edit_name").value;
     const edit_bio = document.getElementById("edit_bio").value;
@@ -128,7 +128,7 @@ function userEdit(id) {
             bio: edit_bio,
         }
     }
-    fetch('https://teachapi.herokuapp.com/users/' + id, {
+    fetch(user_edit + id, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
