@@ -167,7 +167,7 @@ function userdelete_button() {
 }
 // ユーザーのタイムライン https://teachapi.herokuapp.com/users/{id}
 function user_timeline() {
-    const timeline = "https://teachapi.herokuapp.com/users/timeline" + id
+    const timeline = "https://teachapi.herokuapp.com/users/timeline/" + id
     const timeline_page = document.getElementById("timeline_page").value;
     const timeline_limit = document.getElementById("timeline_limit").value;
     const timeline_query = document.getElementById("timeline_query").value;
