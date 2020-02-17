@@ -146,10 +146,10 @@ function userEdit() {
         })
 }
 // ユーザー削除 https://teachapi.herokuapp.com/users/{id}
-function userdalete_button() {
-    const id = document.getElementById("user_dalete").value;
-    const userdalete = "https://teachapi.herokuapp.com/users/" + id
-    fetch(userdalete, {
+function userdelete_button() {
+    const id = document.getElementById("user_delete").value;
+    const userdelete = "https://teachapi.herokuapp.com/users/" + id
+    fetch(userdelete, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -242,8 +242,8 @@ function post_edit() {
 }
 
 // 投稿削除　https://teachapi.herokuapp.com/posts/{id}
-function dalete_button() {
-    const id = document.getElementById("post_dalete").value;
+function delete_button() {
+    const id = document.getElementById("post_delete").value;
     const post_id = "https://teachapi.herokuapp.com/posts/" + id
     fetch(post_id, {
         method: 'DELETE',
