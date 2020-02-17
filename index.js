@@ -95,11 +95,11 @@ function getUsers() {
 
 // 投稿一覧　https://teachapi.herokuapp.com/posts
 function postList() {
-    const post_list = "https://teachapi.herokuapp.com/posts"
+    const post_list = `https://teachapi.herokuapp.com/posts?page=${post_page}&limit=${post_limit}&query=${post_query}`
     const post_page = document.getElementById("post_page").value;
     const post_limit = document.getElementById("post_limit").value;
     const post_query = document.getElementById("post_query").value;
-    fetch(`https://teachapi.herokuapp.com/posts?page=${post_page}&limit=${post_limit}&query=${post_query}`, {
+    fetch(post_list, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
