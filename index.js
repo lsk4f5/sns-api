@@ -1,10 +1,10 @@
 // token
 // Authorization: Bearer ircQkvMQUHpotKQN9sf3JAtt
-id = (localStorage.getItem("id"));
+id = localStorage.getItem("id");
+token = localStorage.getItem("token");
 //  https://teachapi.herokuapp.com/sign_up　ユーザー登録
-const register = "https://teachapi.herokuapp.com/sign_up";
-// フォーム入力された情報を取得
 function user() {
+    const register = "https://teachapi.herokuapp.com/sign_up";
     const sign_up_name = document.getElementById("sign_up_name").value;
     console.log("sign_up_name : " + sign_up_name);
     const sign_up_bio = document.getElementById("sign_up_bio").value;
@@ -40,10 +40,8 @@ function user() {
 }
 
 // ログイン  https://teachapi.herokuapp.com/sign_in
-// 怖いから確認のコミットとプッシュをします
-const login_url = "https://teachapi.herokuapp.com/sign_in"
-// 入力された情報を取得
 function login() {
+    const login_url = "https://teachapi.herokuapp.com/sign_in"
     const login_mail = document.getElementById("login_mail").value;
     const login_pass = document.getElementById("login_pass").value;
     const login_passcheck = document.getElementById("login_passcheck").value;
@@ -59,27 +57,22 @@ function login() {
         method: 'POST',
         body: JSON.stringify(login_data),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "Authorization": "Bearer " + token
         }
     })
         .then((userlogin) => {
             return userlogin.json();
         })
         .then(json => {
-            // const id = json.id
             console.log(json.id)
             localStorage.setItem('id', json.id);
-
-            // const load = () => {
-            //     localStorage.getItem("userid");
-            // }
+            localStorage.setItem('token', json.token);
         })
 
 }
 
 // ユーザー一覧　 https://teachapi.herokuapp.com/users
-const user_list = "https://teachapi.herokuapp.com/users"
-// 入力された情報を取得
 function getUsers() {
     const page = document.getElementById("page").value;
     const limit = document.getElementById("limit").value;
@@ -89,7 +82,7 @@ function getUsers() {
         headers: {
             'Content-Type': 'application/json',
             // ベアラートークンを入れる
-            "Authorization": "Bearer ircQkvMQUHpotKQN9sf3JAtt"
+            "Authorization": "Bearer " + token
         }
     })
         .then((userslist) => {
@@ -101,9 +94,8 @@ function getUsers() {
 }
 
 // 投稿一覧　https://teachapi.herokuapp.com/posts
-const post_list = "https://teachapi.herokuapp.com/posts"
-// 入力された情報を取得
 function postList() {
+    const post_list = "https://teachapi.herokuapp.com/posts"
     const post_page = document.getElementById("post_page").value;
     const post_limit = document.getElementById("post_limit").value;
     const post_query = document.getElementById("post_query").value;
@@ -112,7 +104,7 @@ function postList() {
         headers: {
             'Content-Type': 'application/json',
             // ベアラートークンを入れる
-            "Authorization": "Bearer ircQkvMQUHpotKQN9sf3JAtt"
+            "Authorization": "Bearer " + token
         }
     })
         .then((post_list) => {
@@ -126,9 +118,8 @@ function postList() {
 }
 
 // ユーザー編集　 https://teachapi.herokuapp.com/users/{id}
-const user_edit = "https://teachapi.herokuapp.com/users/895" + id
-// 入力された情報を取得
 function userEdit(id) {
+    const user_edit = "https://teachapi.herokuapp.com/users/895" + id
     const edit_name = document.getElementById("edit_name").value;
     const edit_bio = document.getElementById("edit_bio").value;
     const data = {
@@ -142,7 +133,7 @@ function userEdit(id) {
         headers: {
             'Content-Type': 'application/json',
             // ベアラートークンを入れる
-            "Authorization": "Bearer ircQkvMQUHpotKQN9sf3JAtt",
+            "Authorization": "Bearer " + token
         },
         body: JSON.stringify(data),
     })
@@ -151,10 +142,10 @@ function userEdit(id) {
         })
         .then((json) => {
             console.log(json);
+
         })
 }
 // ユーザー削除 https://teachapi.herokuapp.com/users/{id}
-// 入力された情報を取得
 function userdalete_button() {
     const id = document.getElementById("user_dalete").value;
     const userdalete = "https://teachapi.herokuapp.com/users/" + id
@@ -163,7 +154,7 @@ function userdalete_button() {
         headers: {
             'Content-Type': 'application/json',
             // ベアラートークンを入れる
-            "Authorization": "Bearer ircQkvMQUHpotKQN9sf3JAtt"
+            "Authorization": "Bearer " + token
         }
     })
         .then((response) => {
@@ -175,9 +166,8 @@ function userdalete_button() {
 
 }
 // ユーザーのタイムライン https://teachapi.herokuapp.com/users/{id}
-const timeline = "https://teachapi.herokuapp.com/users/timeline" + id
-// 入力された情報を取得
 function user_timeline() {
+    const timeline = "https://teachapi.herokuapp.com/users/timeline" + id
     const timeline_page = document.getElementById("timeline_page").value;
     const timeline_limit = document.getElementById("timeline_limit").value;
     const timeline_query = document.getElementById("timeline_query").value;
@@ -186,7 +176,7 @@ function user_timeline() {
         headers: {
             'Content-Type': 'application/json',
             // ベアラートークンを入れる
-            "Authorization": "Bearer ircQkvMQUHpotKQN9sf3JAtt"
+            "Authorization": "Bearer " + token
         }
     })
         .then((response) => {
@@ -198,9 +188,8 @@ function user_timeline() {
 }
 
 // 投稿作成　 https://teachapi.herokuapp.com/posts
-const create_post = "https://teachapi.herokuapp.com/posts"
-// 入力された情報を取得
 function createPost() {
+    const create_post = "https://teachapi.herokuapp.com/posts"
     const new_page = document.getElementById("new_page").value;
     const postdata = {
         post_params: {
@@ -212,7 +201,7 @@ function createPost() {
         headers: {
             'Content-Type': 'application/json',
             // ベアラートークンを入れる
-            "Authorization": "Bearer ircQkvMQUHpotKQN9sf3JAtt"
+            "Authorization": "Bearer " + token
         },
         body: JSON.stringify(postdata),
     })
@@ -225,9 +214,8 @@ function createPost() {
 }
 
 // 投稿編集　https://teachapi.herokuapp.com/posts/{id}
-const postEdit = "https://teachapi.herokuapp.com/posts/" + id
-// 入力された情報を取得
 function post_edit() {
+    const postEdit = "https://teachapi.herokuapp.com/posts/" + id
     const edit_post = document.getElementById("edit_post").value;
     const post_id = document.getElementById("post_id").value;
     const editdata = {
@@ -235,13 +223,12 @@ function post_edit() {
             text: edit_post
         }
     };
-
     fetch('https://teachapi.herokuapp.com/posts/552', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
             // ベアラートークンを入れる
-            "Authorization": "Bearer ircQkvMQUHpotKQN9sf3JAtt"
+            "Authorization": "Bearer " + token
         },
         body: JSON.stringify(editdata),
     })
@@ -255,7 +242,6 @@ function post_edit() {
 }
 
 // 投稿削除　https://teachapi.herokuapp.com/posts/{id}
-// 入力された情報を取得
 function dalete_button() {
     const id = document.getElementById("post_dalete").value;
     const post_id = "https://teachapi.herokuapp.com/posts/" + id
@@ -264,7 +250,7 @@ function dalete_button() {
         headers: {
             'Content-Type': 'application/json',
             // ベアラートークンを入れる
-            "Authorization": "Bearer ircQkvMQUHpotKQN9sf3JAtt"
+            "Authorization": "Bearer " + token
         }
     })
         .then((response) => {
