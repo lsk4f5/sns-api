@@ -99,9 +99,6 @@ function getUsers() {
             console.log(json);
         })
 }
-console.log("getUsers() start")
-getUsers()
-console.log("getUsers() end")
 
 // 投稿一覧　https://teachapi.herokuapp.com/posts
 const post_list = "https://teachapi.herokuapp.com/posts"
@@ -123,11 +120,10 @@ function postList() {
         })
         .then(json => {
             console.log(json);
+            const p = document.getElementById('p-postList')
+            p.innerHTML = JSON.stringify(json);
         })
 }
-console.log("postList() start")
-postList()
-console.log("postList() end")
 
 // ユーザー編集　 https://teachapi.herokuapp.com/users/{id}
 const user_edit = "https://teachapi.herokuapp.com/users/895" + id
@@ -157,7 +153,27 @@ function userEdit(id) {
             console.log(json);
         })
 }
+// ユーザー削除 https://teachapi.herokuapp.com/users/{id}
+// 入力された情報を取得
+function userdalete_button() {
+    const id = document.getElementById("user_dalete").value;
+    const userdalete = "https://teachapi.herokuapp.com/users/" + id
+    fetch(userdalete, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            // ベアラートークンを入れる
+            "Authorization": "Bearer ircQkvMQUHpotKQN9sf3JAtt"
+        }
+    })
+        .then((response) => {
+            return response.json();
+        })
+        .then(json => {
+            console.log(json);
+        })
 
+}
 // ユーザーのタイムライン https://teachapi.herokuapp.com/users/{id}
 const timeline = "https://teachapi.herokuapp.com/users/timeline" + id
 // 入力された情報を取得
@@ -239,3 +255,23 @@ function post_edit() {
 }
 
 // 投稿削除　https://teachapi.herokuapp.com/posts/{id}
+// 入力された情報を取得
+function dalete_button() {
+    const id = document.getElementById("post_dalete").value;
+    const post_id = "https://teachapi.herokuapp.com/posts/" + id
+    fetch(post_id, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            // ベアラートークンを入れる
+            "Authorization": "Bearer ircQkvMQUHpotKQN9sf3JAtt"
+        }
+    })
+        .then((response) => {
+            return response.json();
+        })
+        .then(json => {
+            console.log(json);
+        })
+
+}
