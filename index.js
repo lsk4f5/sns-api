@@ -58,7 +58,7 @@ function login() {
         body: JSON.stringify(login_data),
         headers: {
             'Content-Type': 'application/json',
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + localStorage.getItem(token)
         }
     })
         .then((userlogin) => {
@@ -82,7 +82,7 @@ function getUsers() {
         headers: {
             'Content-Type': 'application/json',
             // ベアラートークンを入れる
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + localStorage.getItem(token)
         }
     })
         .then((userslist) => {
@@ -104,7 +104,7 @@ function postList() {
         headers: {
             'Content-Type': 'application/json',
             // ベアラートークンを入れる
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + localStorage.getItem(token)
         }
     })
         .then((post_list) => {
@@ -112,8 +112,6 @@ function postList() {
         })
         .then(json => {
             console.log(json);
-            const p = document.getElementById('p-postList')
-            p.innerHTML = JSON.stringify(json);
         })
 }
 
@@ -133,7 +131,7 @@ function userEdit() {
         headers: {
             'Content-Type': 'application/json',
             // ベアラートークンを入れる
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + localStorage.getItem(token)
         },
         body: JSON.stringify(data),
     })
@@ -154,7 +152,7 @@ function userdelete_button() {
         headers: {
             'Content-Type': 'application/json',
             // ベアラートークンを入れる
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + localStorage.getItem(token)
         }
     })
         .then((response) => {
@@ -176,7 +174,7 @@ function user_timeline() {
         headers: {
             'Content-Type': 'application/json',
             // ベアラートークンを入れる
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + localStorage.getItem(token)
         }
     })
         .then((response) => {
@@ -201,7 +199,7 @@ function createPost() {
         headers: {
             'Content-Type': 'application/json',
             // ベアラートークンを入れる
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + localStorage.getItem(token)
         },
         body: JSON.stringify(postdata),
     })
@@ -228,7 +226,7 @@ function post_edit() {
         headers: {
             'Content-Type': 'application/json',
             // ベアラートークンを入れる
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + localStorage.getItem(token)
         },
         body: JSON.stringify(editdata),
     })
@@ -250,7 +248,7 @@ function postdelete_button() {
         headers: {
             'Content-Type': 'application/json',
             // ベアラートークンを入れる
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + localStorage.getItem(token)
         }
     })
         .then((response) => {
