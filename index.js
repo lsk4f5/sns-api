@@ -117,7 +117,7 @@ function postList() {
 
 // ユーザー編集　 https://teachapi.herokuapp.com/users/{id}
 function userEdit() {
-    const user_edit = "https://teachapi.herokuapp.com/users/895" + id
+    const user_edit = "https://teachapi.herokuapp.com/users/895" + localStorage.getItem(id)
     const edit_name = document.getElementById("edit_name").value;
     const edit_bio = document.getElementById("edit_bio").value;
     const data = {
@@ -146,7 +146,7 @@ function userEdit() {
 // ユーザー削除 https://teachapi.herokuapp.com/users/{id}
 function userdelete_button() {
     const id = document.getElementById("user_delete").value;
-    const userdelete = "https://teachapi.herokuapp.com/users/" + id
+    const userdelete = "https://teachapi.herokuapp.com/users/" + localStorage.getItem(id)
     fetch(userdelete, {
         method: 'DELETE',
         headers: {
@@ -165,7 +165,7 @@ function userdelete_button() {
 }
 // ユーザーのタイムライン https://teachapi.herokuapp.com/users/{id}
 function user_timeline() {
-    const timeline = "https://teachapi.herokuapp.com/users/timeline/" + id
+    const timeline = "https://teachapi.herokuapp.com/users/timeline/" + localStorage.getItem(id)
     const timeline_page = document.getElementById("timeline_page").value;
     const timeline_limit = document.getElementById("timeline_limit").value;
     const timeline_query = document.getElementById("timeline_query").value;
@@ -213,7 +213,7 @@ function createPost() {
 
 // 投稿編集　https://teachapi.herokuapp.com/posts/{id}
 function post_edit() {
-    const postEdit = "https://teachapi.herokuapp.com/posts/" + id
+    const postEdit = "https://teachapi.herokuapp.com/posts/" + localStorage.getItem(id)
     const edit_post = document.getElementById("edit_post").value;
     const post_id = document.getElementById("post_id").value;
     const editdata = {
@@ -242,7 +242,7 @@ function post_edit() {
 // 投稿削除　https://teachapi.herokuapp.com/posts/{id}
 function postdelete_button() {
     const id = document.getElementById("post_delete").value;
-    const post_id = "https://teachapi.herokuapp.com/posts/" + id
+    const post_id = "https://teachapi.herokuapp.com/posts/" + localStorage.getItem(id)
     fetch(post_id, {
         method: 'DELETE',
         headers: {

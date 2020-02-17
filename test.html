@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="konno" type="text" value="daiki">
+    <button onclick="save()">保存</button>
+    <button onclick="load()">読込</button>
+</body>
+<script>
+    const data = {
+        "userid": 890,
+        "name": "miseri"
+    }
+    const save = () => {
+
+        localStorage.setItem('useridままー', data.);
+    }
+    const load = () => {
+        localStorage.getItem("id", json);
+        const id = localStorage.getItem("id");
+        console.log(localStorage.getItem("id"))
+    }
+
+</script>
+
+</html>
