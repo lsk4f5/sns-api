@@ -242,7 +242,7 @@ function post_edit() {
 }
 
 // 投稿削除　https://teachapi.herokuapp.com/posts/{id}
-function delete_button() {
+function postdelete_button() {
     const id = document.getElementById("post_delete").value;
     const post_id = "https://teachapi.herokuapp.com/posts/" + id
     fetch(post_id, {
