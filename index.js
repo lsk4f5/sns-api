@@ -58,7 +58,7 @@ function login() {
         body: JSON.stringify(login_data),
         headers: {
             'Content-Type': 'application/json',
-            "Authorization": "Bearer " + localStorage.getItem('token')
+            // "Authorization": "Bearer " + localStorage.getItem('token')
         }
     })
         .then((userlogin) => {
@@ -95,10 +95,10 @@ function getUsers() {
 
 // 投稿一覧　https://teachapi.herokuapp.com/posts
 function postList() {
-    const post_list = `https://teachapi.herokuapp.com/posts?page=${post_page}&limit=${post_limit}&query=${post_query}`
     const post_page = document.getElementById("post_page").value;
     const post_limit = document.getElementById("post_limit").value;
     const post_query = document.getElementById("post_query").value;
+    const post_list = `https://teachapi.herokuapp.com/posts?page=${post_page}&limit=${post_limit}&query=${post_query}`
     fetch(post_list, {
         method: 'GET',
         headers: {
@@ -117,7 +117,7 @@ function postList() {
 
 // ユーザー編集　 https://teachapi.herokuapp.com/users/{id}
 function userEdit() {
-    const user_edit = "https://teachapi.herokuapp.com/users/895" + localStorage.getItem('id')
+    const user_edit = "https://teachapi.herokuapp.com/users/" + localStorage.getItem('id')
     const edit_name = document.getElementById("edit_name").value;
     const edit_bio = document.getElementById("edit_bio").value;
     const data = {
@@ -126,7 +126,7 @@ function userEdit() {
             bio: edit_bio,
         }
     }
-    fetch(user_edit + id, {
+    fetch(user_edit, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -165,7 +165,7 @@ function userdelete_button() {
 }
 // ユーザーのタイムライン https://teachapi.herokuapp.com/users/{id}
 function user_timeline() {
-    const timeline = "https://teachapi.herokuapp.com/users/timeline/" + localStorage.getItem('id')
+    const timeline = "https://teachapi.herokuapp.com/users/" + localStorage.getItem('id') + "/timeline"
     const timeline_page = document.getElementById("timeline_page").value;
     const timeline_limit = document.getElementById("timeline_limit").value;
     const timeline_query = document.getElementById("timeline_query").value;
@@ -194,7 +194,7 @@ function createPost() {
             text: new_page
         }
     };
-    fetch('https://teachapi.herokuapp.com/posts', {
+    fetch(create_post, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -213,15 +213,15 @@ function createPost() {
 
 // 投稿編集　https://teachapi.herokuapp.com/posts/{id}
 function post_edit() {
-    const postEdit = "https://teachapi.herokuapp.com/posts/" + localStorage.getItem('id')
-    const edit_post = document.getElementById("edit_post").value;
     const post_id = document.getElementById("post_id").value;
+    const postEdit = "https://teachapi.herokuapp.com/posts/" + post_id
+    const edit_post = document.getElementById("edit_post").value;
     const editdata = {
         post_params: {
             text: edit_post
         }
     };
-    fetch('https://teachapi.herokuapp.com/posts/552', {
+    fetch(postEdit, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -231,7 +231,6 @@ function post_edit() {
         body: JSON.stringify(editdata),
     })
         .then(response => {
-            console.log("test");
             return response.json();
         })
         .then(json => {
@@ -241,8 +240,8 @@ function post_edit() {
 
 // 投稿削除　https://teachapi.herokuapp.com/posts/{id}
 function postdelete_button() {
-    const id = document.getElementById("post_delete").value;
-    const post_id = "https://teachapi.herokuapp.com/posts/" + localStorage.getItem('id')
+    const post_delete = document.getElementById("post_delete").value;
+    const post_id = "https://teachapi.herokuapp.com/posts/" + post_delete
     fetch(post_id, {
         method: 'DELETE',
         headers: {
@@ -257,5 +256,4 @@ function postdelete_button() {
         .then(json => {
             console.log(json);
         })
-
 }
