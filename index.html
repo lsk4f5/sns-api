@@ -47,6 +47,7 @@
             <input id="post_query" type="text" placeholder="キーワード検索">
             <input type="button" value="送信" onclick="postList();">
         </div>
+        <p id="p-postList"></p>
     </div>
     <div class="user_edit">
         <p>ユーザー編集</p>
@@ -57,12 +58,17 @@
         </div>
     </div>
     <div>
+        <p>ユーザー削除</p>
+        <input id="user_dalete" type="text" placeholder="ユーザーのID">
+        <input type="button" value="削除" onclick="userdalete_button(id);">
+    </div>
+    <div>
         <p>ユーザーのタイムライン</p>
         <div>
             <input id="timeline_page" type="text" placeholder="ページ数">
             <input id="timeline_limit" type="text" placeholder="表示件数">
             <input id="timeline_query" type="text" placeholder="キーワード検索">
-            <input type="button" value="送信" onclick="user_timeline(id);">
+            <input type="button" value="送信" onclick="user_timeline();">
         </div>
     </div>
     <div>
@@ -79,6 +85,11 @@
             <input id="edit_post" type="text" placeholder="投稿内容">
             <input type="button" value="変更" onclick="post_edit(id)">
         </div>
+    </div>
+    <div>
+        <p>投稿削除</p>
+        <input id="post_dalete" type="text" placeholder="投稿のID">
+        <input type="button" value="削除" onclick="dalete_button();">
     </div>
     <script src="index.js"></script>
 </body>
