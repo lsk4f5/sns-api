@@ -165,10 +165,11 @@ function userdelete_button() {
 }
 // ユーザーのタイムライン https://teachapi.herokuapp.com/users/{id}
 function user_timeline() {
-    const timeline = "https://teachapi.herokuapp.com/users/" + localStorage.getItem('id') + "/timeline"
     const timeline_page = document.getElementById("timeline_page").value;
     const timeline_limit = document.getElementById("timeline_limit").value;
     const timeline_query = document.getElementById("timeline_query").value;
+    const timeline_id = document.getElementById("timeline_id").value;
+    const timeline = `https://teachapi.herokuapp.com/users/` + timeline_id + `/timeline?page=${timeline_page}&limit=${timeline_limit}&quely=${timeline_query}`
     fetch(timeline, {
         method: 'GET',
         headers: {
